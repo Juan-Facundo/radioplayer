@@ -7,12 +7,12 @@ Por el momento se ha probado que funciona con:
 
 #### Formatos de audio:
 
-. mp3
-. ogg
+    . mp3
+    . ogg
 
 #### Navegadores
 
-. html5/audio
-. no html5/audo a traves de un fallback flashplayer (ffmp3)
+    . html5/audio
+    . no html5/audo a traves de un fallback flashplayer (ffmp3)
 
 
