@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/radioplayer.js"></script>
+    <link type="text/css" href="skin/radioplayer.css" rel="stylesheet" />
+    <meta name="viewport" 
+         content="width=device-width, 
+                  initial-scale=1,
+                  maximum-scale=1,
+                  minimum-scale=1,
+                  user-scalable=0"/>
+
+    <!--[if lte IE 8]>
+      <style type='text/css'>
+        .mie8 {
+          background-color: grey;
+        }
+      </style>
+    <![endif]-->
+
+  </head>
+  <body>
+
+    <audio id="reproductor" autoplay>
+      <source src="http://giss.tv:8000/chaotic.mp3" type="audio/mpeg" />
+      <source src="http://mundoafricanista.com.ar:8000/radio1.ogg" type="audio/ogg" />
+    </audio>
+
+  <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+  <div id="jp_container_1" class="jp-audio">
+    <div class="jp-type-single">
+      <div class="rp-interface">
+        <ul class="rp-controls">
+        <p class="status buff">wait!</p>
+          <li class="rp-play"><a href="#" title="play">></a></li>
+          <li class="rp-stop"><a href="#" title="stop">||</a></li>
+          <li class="rp-vol"><a href="#" title="vol-">Vol</a></li>
+          <li class="rp-Vol"><a href="#" title="vol+">vol</a></li>
+        </ul>
+      </div>
+      <div class="jp-title">
+        <ul>
+          <li>Radio Name Here</li>
+        </ul>
+      </div><!-- fin title -->
+    </div>
+  </div>
+
+<object id="instance3" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1" height="1" bgcolor="#FFFFFF">
+<param name="movie" value="js/muses.swf" />
+<param name="flashvars" value="reconnecttime=1800&url=http://giss.tv:8000/chaotic.mp3&lang=en&jsevents=false&codec=mp3&volume=100&tracking=true&title=dsaa&autoplay=false" />
+<param name="wmode" value="window" />
+<param name="scale" value="noscale" />
+<embed name="instance3" src="js/muses.swf" flashvars="reconnecttime=1800&url=http://giss.tv:8000/chaotic.mp3&jsevents=false&lang=en&codec=mp3&volume=100&tracking=true&title=dsaa&autoplay=false" width="1" scale="noscale" height="1" wmode="window" bgcolor="#FFFFFF" type="application/x-shockwave-flash" />
+</object>
+<!-- br/>
+<a href="javascript:instance3.playSound();">Play</a> 
+<a href="javascript:instance3.stopSound();">Stop</a> 
+<a href="javascript:instance3.setVolume('0');">Mute</a> 
+<a href="javascript:instance3.showInfo('UPDATE!');">Show Info</a> 
+<a href="javascript:instance3.setTitle('new title!');">Change Title</a> 
+<a href="javascript:instance3.setUrl(prompt('URL: ','http://drs.dokkogroup.com.ar/971Live.mp3'));">Update Url</a>
+<a href="javascript:instance3.setFallbackUrl(prompt('FALLBACK URL: ','http://drs.dokkogroup.com.ar/971Live.mp3'));">Update FallbackUrl</a>
+-->
+
+<script type="text/javascript">
+	function musesCallback(event,param){
+		switch(event){
+			case "volume":
+				document.getElementById('musesVolume').innerHTML=param;
+				break;
+			case "buffering":
+				document.getElementById('buffering').style.display="block";
+				break;
+			case "play":
+			case "stop":
+			case "ioError":
+			case "intro":
+				document.getElementById('musesStatus').innerHTML=event;
+				document.getElementById('buffering').style.display="none";
+				break;
+			case "metadata-json":
+				document.getElementById('musesMetadatajson').innerHTML=param;
+				eval("var metadata="+param+";");
+				// here you have the metadata object to play with.
+				break;
+			case "metadata":
+				document.getElementById('musesParsedmetadata').innerHTML=param;
+				break;
+			case "source":
+				document.getElementById('musesSource').innerHTML=param;
+				break;
+			case "fallback":
+				document.getElementById('musesFallback').innerHTML=param;
+				break;
+			case "intro-url":
+				document.getElementById('musesIntrourl').innerHTML=param;
+				break;
+			default:
+				alert("MusesRadioPlayer: "+event+" - "+param);
+				break;
+		}
+	}
+	var instance3=(document.instance3)?document.instance3:document.getElementById('instance3');
+</script>
+
+</body>
+</html>
