@@ -16,6 +16,8 @@ Se han tomado partes e ideas de otros proyectos; jplayer
 (http://www.jplayer.org/) y ffmp3
 (https://github.com/fbricker/ffmp3)
 
+    #### el reproductor todavia tiene cosas por hacer. No esta terminado.
+
 Por el momento se ha probado que funciona con:
 
 #### Formatos de audio:
